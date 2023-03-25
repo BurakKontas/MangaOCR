@@ -14,7 +14,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Azure.AI.Translation.Document" Version="1.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.2" />
+		<PackageReference Include="Tesseract" Version="5.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -22,6 +24,10 @@
 		<Content Remove="$(SpaRoot)**" />
 		<None Remove="$(SpaRoot)**" />
 		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="tessdata\" />
 	</ItemGroup>
 
 	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
@@ -42,7 +48,7 @@
 		<!-- Include the newly-built files in the publish output -->
 		<ItemGroup>
 			<DistFiles Include="$(SpaRoot)build\**" />
-			<ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
 				<RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
 				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
