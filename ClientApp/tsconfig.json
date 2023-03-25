@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "CommonJS",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "sourceMap": true,
+      "allowJs": true,
+      "jsx": "react",
+      "moduleResolution": "node",
+      "rootDir": "src",
+      "outDir": "build",
+      "esModuleInterop": true,
+      "strict": true,
+      "noImplicitAny": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "allowImportingTsExtensions": true,
+    },
+    "include": ["src","src/*.ts","src/*.tsx"],
+    "exclude": ["node_modules", "build", "public","src/setupProxy.ts"]
+  }
