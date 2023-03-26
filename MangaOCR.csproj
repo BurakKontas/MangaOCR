@@ -27,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="data\" />
 	  <Folder Include="tessdata\" />
 	</ItemGroup>
 

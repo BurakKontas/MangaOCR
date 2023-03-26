@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MangaOCR.Repository;
-using MangaOCR.Repository.OCR;
-using MangaOCR.Models;
 
 namespace MangaOCR.Controllers
 {
@@ -12,21 +10,11 @@ namespace MangaOCR.Controllers
         [HttpPost("Upload")]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
-            FileUpload fileUpload = new(file, "data");
-            fileUpload.IfFileUploaded();
-            fileUpload.CreateDirectoryIfNotExists();
-            string fileName = await fileUpload.CopyFileAsync();
+            //dosyayı doğrudan pythondaki OCR'a göndericez burada (kaydetmeden)
+            //sonrasında OCR dan gelen text ile çeviri işlemine tabii tutucaz
+            //sonrasında texti geri döndürücez
 
-            return Ok(fileName);
-        }
-
-        [HttpGet("GetText")]
-        public async Task<IActionResult> GetText([FromQuery(Name = "fileName")] string fileName)
-        {
-            OCR ocr = new(fileName);
-            ocr.CheckIfFileExists();
-            List<TranslatedText> textData = await ocr.ReadData();
-            return Ok(textData);
+            return Ok("OK");
         }
     }
 }
